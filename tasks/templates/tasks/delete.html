@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/delete.css' %}" type="text/css" />
+	<title>Delete</title>
+</head>
+<body>
+	<div class="center-column">
+		<div style="text-align: center;" class="text">
+			Are you sure you want to delete '<strong>{{task}}</strong>'? 	
+		</div>
+		<form action="" method="POST">
+				{% csrf_token %}
+				<a href="{% url 'list_task' %}" class="btn btn-success btn-md" style="margin-left: 200px;">Cancel</a>
+				<input type="submit" class="btn btn-danger btn-md" value="Confirm" style="width: 100px;">
+		</form>
+	</div>
+</body>
+</html>
