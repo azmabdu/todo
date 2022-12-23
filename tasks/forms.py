@@ -10,13 +10,8 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = '__all__'
 
-    def __init__(self, page=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        if page:
-            self.fields['complete'].widget.attrs.update(
-                {'class': 'complete'})
-
-        else:
-            self.fields['title'].widget.attrs.update(
-                {'placeholder': 'Add new task...'})
+        self.fields['title'].widget.attrs.update(
+            {'placeholder': 'Add new task...'})

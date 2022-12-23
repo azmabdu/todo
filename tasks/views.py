@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django import forms
 from .models import Task
 from .forms import TaskForm
 
@@ -15,6 +14,7 @@ def index(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
+            print('valid')
         return redirect('/')
 
     return render(request, 'tasks/list.html', {'tasks': tasks, 'form': form})
@@ -22,7 +22,7 @@ def index(request):
 
 def update(request, id):
     task = Task.objects.get(pk=id)
-    form = TaskForm(instance=task,  page=True)
+    form = TaskForm(instance=task)
 
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
